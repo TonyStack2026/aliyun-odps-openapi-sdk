@@ -72,6 +72,8 @@ cd common/java && mvn clean install -DskipTests && cd ../..
 
 或直接执行根目录的 `./build.sh`：它会先处理 `common` 再处理 `catalog-api`，把 `common` 装进本地仓库。注意该脚本会删除并重新生成各语言的输出目录（`go` 全量重建，`java`/`python` 保留 `pom.xml`/`setup.py`）。
 
+`./build.sh` 里从 `Darafile` 同步版本号的两行用的是 BSD 形态的 `sed -i ''`：在 GNU sed（多数 Linux 发行版）上这两步会以 rc=2 失败且不会中止脚本，`java/pom.xml` 与 Python `__version__` 可能停留在 codegen 写下的默认值。跨平台构建建议按上面的方式显式安装 `common`，再构建 `catalog-api`。
+
 两个 Java 模块的 `maven-compiler-plugin` 配置的是 `source/target 7`：JDK 8 / 11 / 17 可编译，JDK 21 及以上会失败（`Target option 7 is no longer supported. Use 8 or later.`）。
 
 ### 构建
