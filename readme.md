@@ -24,6 +24,8 @@ go get github.com/aliyun/aliyun-odps-openapi-sdk/catalog-api/go          # 取�
 go get github.com/aliyun/aliyun-odps-openapi-sdk/catalog-api/go@v0.4.0  # 或锁定版本
 ```
 
+需要 Go 1.23 及以上：`catalog-api/go/go.mod` 声明 `go 1.23.2`，低版本工具链会直接报 `go.mod requires go >= 1.23`。
+
 ### Java
 ```xml
 <dependency>
